@@ -37,6 +37,8 @@ option {
   background-color: var(--primary-color);
   padding: 20px;
   width: 60%;
+  height: 550px;
+  overflow: auto;
 }
 
 .title {
@@ -65,7 +67,7 @@ option {
   text-align: center;
 }
 
-.active {
+.active-form {
   background-color: var(--secondary-color);
   color: white;
 }
@@ -76,6 +78,11 @@ option {
 }
 
 .form-body {
+  display: none;
+}
+
+.form-body.active {
+  display: initial;
   width: 70%;
   margin: auto;
 }
@@ -91,11 +98,12 @@ option {
   justify-content: space-between;
 }
 
-.form-item-inline .form-item {
+.form-item-inline .form-item,
+.form-item-inline .submit {
   width: 45%;
 }
 
-#next {
+.submit {
   margin: 10px 0;
   width: 100%;
   padding: 5px;
@@ -106,17 +114,34 @@ option {
   text-transform: uppercase;
 }
 
-#next:hover {
+.submit:hover {
   cursor: pointer;
+}
+
+/*Table*/
+table {
+  width: 100%;
+}
+
+td:first-child {
+  text-transform: uppercase;
+  text-align: right;
+  font-weight: bold;
+}
+
+td {
+  padding: 5px;
+  width: 10%;
+  text-align: left;
 }
 
 /*Error messages*/
 .error {
   display: none;
   padding: 10px;
-  background-color: rgb(248, 158, 158);
+  margin: auto;
+  background-color: rgb(250, 190, 190);
   color: red;
-  font-weight: bold;
   text-align: center;
 }
 
