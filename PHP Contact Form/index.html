@@ -18,26 +18,26 @@
             <div class="form-parts-item">3</div>
           </div>
         </div>
-        <div class="form-body active">
-          <h2 class="form-part-title">Enter personal credentials</h2>
-          <div class="error"></div>
-          <form action="">
+        <form action="validation.php" method="POST">
+          <div class="form-body active">
+            <h2 class="form-part-title">Enter personal credentials</h2>
+            <div class="error"></div>
             <div class="form-item">
               <label for="name">Name</label>
-              <input type="text" id="name" />
+              <input type="text" id="name" name="name" />
             </div>
             <div class="form-item">
               <label for="name">Email</label>
-              <input type="email" id="email" />
+              <input type="email" id="email" name="email" />
             </div>
             <div class="form-item-inline">
               <div class="form-item">
                 <label for="age">Age</label>
-                <input type="number" id="age" min="1" max="100" />
+                <input type="number" id="age" min="1" max="100" name="age" />
               </div>
               <div class="form-item">
                 <label for="gender">Gender</label>
-                <select name="gender" id="gender">
+                <select name="gender" id="gender" name="gender">
                   <option value="none">-</option>
                   <option value="male">Male</option>
                   <option value="female">Female</option>
@@ -47,15 +47,13 @@
             </div>
             <div class="form-item">
               <label for="address">Complete Address</label>
-              <input type="text" id="address" />
+              <input type="text" id="address" name="address" />
             </div>
-            <button class="submit" id="next" type="submit">Next</button>
-          </form>
-        </div>
-        <div class="form-body">
-          <h2 class="form-part-title">Enter other details</h2>
-          <div class="error"></div>
-          <form action="">
+            <button class="submit" id="next" type="button">Next</button>
+          </div>
+          <div class="form-body">
+            <h2 class="form-part-title">Enter other details</h2>
+            <div class="error"></div>
             <div class="form-item">
               <label for="profession">Profession</label>
               <input list="profession" name="profession" id="professionList" />
@@ -83,67 +81,38 @@
             </div>
             <div class="form-item">
               <label for="workplace">Current Workplace</label>
-              <input type="text" id="currentWorkplace" />
+              <input
+                type="text"
+                id="currentWorkplace"
+                name="currentWorkplace"
+              />
             </div>
             <div class="form-item">
               <label for="workplaceAddress">Workplace Address</label>
-              <input type="text" id="workplaceAddress" />
+              <input
+                type="text"
+                id="workplaceAddress"
+                name="workplaceAddress"
+              />
             </div>
             <div class="form-item-inline">
-              <button class="submit" id="previous" type="submit">
+              <button class="submit" id="previous" type="button">
                 Previous
               </button>
-              <button class="submit" id="next" type="submit">Next</button>
+              <button class="submit" id="next" type="button">Next</button>
             </div>
-          </form>
-        </div>
-        <div class="form-body">
-          <h2 class="form-part-title">Confirm details</h2>
-          <table>
-            <tr>
-              <td>Name :</td>
-              <td>Mark Joshua Dalire</td>
-            </tr>
-            <tr>
-              <td>Email :</td>
-              <td>mmdalire@email.com</td>
-            </tr>
-            <tr>
-              <td>Age :</td>
-              <td>21 years old</td>
-            </tr>
-            <tr>
-              <td>Gender :</td>
-              <td>Male</td>
-            </tr>
-            <tr>
-              <td>Complete Address :</td>
-              <td>Blk 11 Lot 1, Camella Montego, Antipolo City</td>
-            </tr>
-            <tr>
-              <td>Profession :</td>
-              <td>Web Developer</td>
-            </tr>
-            <tr>
-              <td>Highest Educational Attainment :</td>
-              <td>Bachelor's Degree</td>
-            </tr>
-            <tr>
-              <td>Current Workplace :</td>
-              <td>N/A</td>
-            </tr>
-            <tr>
-              <td>Current Workplace Address:</td>
-              <td>N/A</td>
-            </tr>
-          </table>
-          <div class="form-item-inline">
-            <button class="submit" id="previous" type="submit">
-              Previous
-            </button>
-            <button class="submit" id="next" type="submit">Next</button>
           </div>
-        </div>
+          <div class="form-body">
+            <h2 class="form-part-title">Confirm details</h2>
+            <table></table>
+            <div class="form-item-inline">
+              <button class="submit" id="previous" type="button">
+                Previous
+              </button>
+              <button class="submit" id="next" type="submit">Confirm</button>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
     <footer>

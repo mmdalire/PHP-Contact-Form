@@ -1,6 +1,19 @@
 const formContainer = document.querySelector(".form-body");
 const next = document.querySelectorAll("#next");
 const previous = document.querySelectorAll("#previous");
+const confirmTable = document.querySelector("table");
+
+const form = {
+  name: ["Name :"],
+  email: ["Email :"],
+  age: ["Age :"],
+  gender: ["Gender :"],
+  address: ["Address :"],
+  profession: ["Profession :"],
+  education: ["Highest Educational Attainment :"],
+  workplace: ["Current Wokplace :"],
+  workplaceAddress: ["Current Workplace Address :"],
+};
 
 const verifyContent = (index) => {
   const error = document.querySelectorAll(".error");
@@ -28,6 +41,15 @@ const verifyContent = (index) => {
         error[index].style.display = "block";
         return false;
       }
+      //Check for the value modifications first
+      const modifiedGender = gender.slice(0, 1).toUpperCase() + gender.slice(1);
+
+      form.name[1] = name;
+      form.email[1] = email;
+      form.age[1] = age;
+      form.gender[1] = modifiedGender;
+      form.address[1] = address;
+
       error[index].style.display = "none";
       return true;
     } else {
@@ -47,6 +69,24 @@ const verifyContent = (index) => {
         error[index].style.display = "block";
         return false;
       } else {
+        //Check for modifications in value
+        const modifiedEducation =
+          education
+            .split(/(?=[A-Z])/)
+            .join(" ")
+            .slice(0, 1)
+            .toUpperCase() +
+          education
+            .split(/(?=[A-Z])/)
+            .join(" ")
+            .slice(1);
+
+        form.profession[1] = profession;
+        form.education[1] = modifiedEducation;
+        form.workplace[1] = workplace;
+        form.workplaceAddress[1] = workplaceAddress;
+        confirmDetails(form);
+
         error[index].style.display = "none";
         return true;
       }
@@ -55,46 +95,67 @@ const verifyContent = (index) => {
       error[index].style.display = "block";
       return false;
     }
+  } else {
+    return true;
   }
 };
 
-const proceedNextForm = (index) => {
-  if (!verifyContent(index)) return;
-  const active = document.querySelector(".active-form");
-  const activeForm = document.querySelector(".active");
+const confirmDetails = (form) => {
+  confirmTable.textContent = "";
+  //Count form length
+  let key;
+  for (key in form) {
+    const tableRow = document.createElement("tr");
+    const tableDataHeader = document.createElement("td");
+    const tableData = document.createElement("td");
 
+    tableDataHeader.textContent = form[key][0];
+    tableData.textContent = form[key][1];
+    tableRow.appendChild(tableDataHeader);
+    tableRow.appendChild(tableData);
+    confirmTable.appendChild(tableRow);
+  }
+};
+
+const proceedNextForm = (e, index) => {
+  if (!verifyContent(index)) {
+    e.preventDefault();
+    return;
+  }
+  const activeForm = document.querySelector(".active-form");
+  const active = document.querySelector(".active");
+
+  console.log(active.nextElementSibling);
   if (active.nextElementSibling) {
-    active.classList.remove("active-form");
-    active.nextElementSibling.classList.add("active-form");
+    activeForm.classList.remove("active-form");
+    activeForm.nextElementSibling.classList.add("active-form");
 
-    activeForm.classList.remove("active");
-    activeForm.nextElementSibling.classList.add("active");
+    active.classList.remove("active");
+    active.nextElementSibling.classList.add("active");
   }
 };
 
 const proceedPreviousForm = () => {
-  const active = document.querySelector(".active-form");
-  const activeForm = document.querySelector(".active");
+  const activeForm = document.querySelector(".active-form");
+  const active = document.querySelector(".active");
 
   if (active.previousElementSibling) {
-    active.classList.remove("active-form");
-    active.previousElementSibling.classList.add("active-form");
+    activeForm.classList.remove("active-form");
+    activeForm.previousElementSibling.classList.add("active-form");
 
-    activeForm.classList.remove("active");
-    activeForm.previousElementSibling.classList.add("active");
+    active.classList.remove("active");
+    active.previousElementSibling.classList.add("active");
   }
 };
 
 next.forEach((n, index) => {
   n.addEventListener("click", (e) => {
-    e.preventDefault();
-    proceedNextForm(index);
+    proceedNextForm(e, index);
   });
 });
 
 previous.forEach((p) => {
   p.addEventListener("click", (e) => {
-    e.preventDefault();
     proceedPreviousForm();
   });
 });
