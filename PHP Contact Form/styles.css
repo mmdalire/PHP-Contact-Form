@@ -12,6 +12,10 @@
   font-family: "Roboto", sans-serif;
 }
 
+a {
+  text-decoration: none;
+}
+
 input,
 select {
   background-color: transparent;
@@ -168,4 +172,23 @@ footer {
 
 footer div {
   margin: 2px 5px;
+}
+
+.return-container {
+  text-align: center;
+}
+
+.return-btn {
+  cursor: pointer;
+  background-color: var(--secondary-color);
+  border: none;
+  margin: auto;
+  padding: 10px;
+}
+
+.return-btn a {
+  text-decoration: none;
+  color: white;
+  font-weight: bolder;
+  text-transform: uppercase;
 }
